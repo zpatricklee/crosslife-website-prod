@@ -16,8 +16,8 @@ p {
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
-  padding: 0px 10px;
-  font-weight: 520;
+  padding: 0px 12px;
+  font-weight: 510;
 }
 
 h2 {
@@ -521,7 +521,7 @@ h2 {
   .welcome-section {
     height: auto;
     margin-bottom: 20px;
-    padding: 10px 25px;
+    padding: 10px 0px;
   }
 
   .welcome-section-text-container {

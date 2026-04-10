@@ -1,5 +1,7 @@
 const BASE = location.hostname.includes('github.io') ? '/crosslife-test' : '';
 
+console.log('BASE path:', BASE);
+
 // fetch('/partials/home-banner.html')
 fetch(`${BASE}/partials/home-banner.html`)
   .then((response) => response.text())

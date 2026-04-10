@@ -1,0 +1,540 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', 'Arial', 'Helvetica Neue', sans-serif;
+  background: #ffffff;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #000000;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  padding: 0px 10px;
+}
+
+h2 {
+  letter-spacing: -5px;
+  font-size: 3rem;
+  padding: 10px 20px;
+}
+
+.home-banner {
+  background: url('./assets/church-street-view.png') no-repeat center
+    center/cover;
+  background-attachment: fixed;
+  background-position: center;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+}
+
+.navbar {
+  display: flex;
+  width: 40%;
+  min-width: 400px;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  font-weight: 600;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
+}
+
+.navbar a {
+  color: #ffffff;
+  border-bottom: 2px solid transparent;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: all 0.4s ease;
+}
+
+.navbar a:hover {
+  border-bottom: 2px solid #ffffff;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+  margin-bottom: 60px;
+}
+
+.menu-toggle i {
+  color: #ffffff;
+  font-size: 3rem;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #222;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  min-width: 160px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: #fff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #575757;
+}
+
+.navbar .give {
+  border: 3px solid #ffffff;
+  border-radius: 4px;
+  padding: 10px 12px;
+}
+
+.welcome-section {
+  padding: 0px 20px;
+  text-align: center;
+  font-weight: 1;
+  margin-bottom: 60px;
+}
+
+.welcome-section h1 {
+  background: url('./assets/church-street-view.png') no-repeat center center /
+    cover;
+  background-attachment: fixed;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  /* your existing styles */
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  letter-spacing: -7px;
+}
+
+.welcome-section-text-container {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  height: calc(100%);
+}
+
+.sunday-gatherings {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.location {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.location a {
+  color: #e7b309;
+  text-decoration: none;
+}
+
+.newcomers-section {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.newcomers-form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.newcomers-section a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.newcomers-form-btn {
+  border: 3px solid #000000;
+  border-radius: 4px;
+  padding: 10px 12px;
+}
+
+.footer {
+  margin-top: 60px;
+  background-color: #000000;
+  text-align: center;
+  padding: 60px 0;
+}
+
+.footer p {
+  color: #ffffff;
+}
+
+.footer-socials {
+  margin-top: 20px;
+}
+
+.footer-socials i {
+  font-size: 2rem;
+  margin: 0 10px;
+}
+
+.footer-socials a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.pastor-bio-section {
+  padding: 0px 20px;
+  text-align: center;
+  font-weight: 1;
+  margin-bottom: 60px;
+}
+
+.pastor-bio-section h1 {
+  background: url('./assets/church-street-view.png') no-repeat center center /
+    cover;
+  background-attachment: fixed;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  /* your existing styles */
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  letter-spacing: -7px;
+}
+
+.vision-and-values-section {
+  padding: 0px 20px;
+  text-align: center;
+  font-weight: 1;
+  margin-bottom: 60px;
+}
+
+.vision-and-values-section h1 {
+  background: url('./assets/church-street-view.png') no-repeat center center /
+    cover;
+  background-attachment: fixed;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  /* your existing styles */
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  letter-spacing: -7px;
+}
+
+.sermons-section {
+  padding: 0px 20px;
+  text-align: center;
+  font-weight: 1;
+  margin-bottom: 60px;
+}
+
+.sermons-section h1 {
+  background: url('./assets/church-street-view.png') no-repeat center center /
+    cover;
+  background-attachment: fixed;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  /* your existing styles */
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  letter-spacing: -7px;
+}
+
+.sermons-section {
+  padding: 0px 20px;
+  text-align: center;
+  font-weight: 1;
+  margin-bottom: 60px;
+}
+
+.sermons-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+#sermons-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+#sermons-list > div {
+  background: #f8f8f8;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  width: 320px;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#sermons-list > div:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+}
+
+#sermons-list img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+#sermons-list p {
+  font-size: 1.1rem;
+  color: #222;
+  margin: 0.5rem 0 0 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+#sermons-list a {
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  /* background-color:; */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.pastor-bio-image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pastor-bio-image-container img {
+  width: 300px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
+}
+
+.menu-toggle.overlay-active {
+  display: none;
+}
+
+.mobile-submenu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 1);
+  z-index: 95;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.mobile-submenu-overlay.active {
+  display: flex;
+}
+
+.mobile-submenu-overlay a {
+  color: #fff;
+  font-size: 1.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 0;
+}
+
+.mobile-submenu-overlay a:hover {
+  color: #e7b309;
+}
+
+.mobile-back-arrow {
+  position: fixed;
+  top: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  color: #fff;
+  font-size: 3rem;
+  cursor: pointer;
+  z-index: 101;
+
+  background-color: rgba(200, 200, 200, 0.3);
+  border-radius: 40px;
+  padding: 6px 12px;
+}
+
+.navbar-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 89;
+}
+
+.navbar-backdrop.active {
+  display: block;
+}
+
+/* Responsive Styles */
+@media (max-width: 1100px) {
+  .navbar {
+    width: 80%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .welcome-section {
+    height: 30vh;
+  }
+
+  .welcome-section h1 {
+    font-size: 4rem;
+    letter-spacing: -5px;
+    padding: 10px 20px;
+    height: auto;
+  }
+}
+
+@media (max-width: 804px) {
+  .navbar.active .dropdown-content {
+    display: none;
+  }
+
+  .navbar.active .dropdown {
+    display: flex;
+    justify-content: center;
+    padding: 12px 0;
+  }
+
+  .navbar.active .dropdown .dropbtn {
+    padding: 0;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: static;
+    z-index: 100;
+    background-color: rgba(200, 200, 200, 0.3);
+    border-radius: 50px;
+    padding: 6px 16px;
+  }
+
+  .menu-toggle.navbar-active {
+    position: fixed;
+    top: 10vh;
+  }
+
+  .navbar {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    height: 45vh;
+  }
+
+  .navbar.active {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 90;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .navbar.active a {
+    font-size: 1.75rem;
+    padding: 12px 0;
+    border-bottom: none;
+  }
+
+  .navbar.active a:hover {
+    border-bottom: none;
+    color: #e7b309;
+    transition: none;
+  }
+
+  .navbar.active .give {
+    border: 0;
+  }
+
+  .home-banner {
+    background-position: bottom;
+    height: 55vh;
+  }
+
+  .welcome-section {
+    height: auto;
+    margin-bottom: 20px;
+    padding: 10px 25px;
+  }
+
+  .welcome-section-text-container {
+    height: auto;
+  }
+
+  .welcome-section h1 {
+    height: auto;
+    font-size: 3rem;
+    letter-spacing: -4px;
+  }
+
+  h2 {
+    font-size: 2rem;
+    letter-spacing: -3px;
+  }
+}

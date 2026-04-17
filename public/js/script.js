@@ -12,20 +12,21 @@ function resizeAndMoveWelcomeSection() {
       !welcomeSectionContainer.contains(welcomeText)
     ) {
       welcomeSectionContainer.appendChild(welcomeText);
-    } else {
+    } else if (
       // Move the welcome text back to its original position if it exists
-      if (
-        welcomeText &&
+      (welcomeText &&
         welcomeSectionContainer &&
-        !document.body.contains(welcomeText)
-      ) {
-        document.body.insertBefore(welcomeText, welcomeSectionContainer.nextSibling);
-      } else if (welcomeText && welcomeSectionContainer && welcomeSectionContainer.contains(welcomeText)) {
-        document.body.insertBefore(welcomeText, welcomeSectionContainer.nextSibling);
-      }
+        !document.body.contains(welcomeText)) ||
+      (welcomeText && welcomeSectionContainer?.contains(welcomeText))
+    ) {
+      document.body.insertBefore(
+        welcomeText,
+        welcomeSectionContainer.nextSibling,
+      );
     }
   }
 }
+
 window.addEventListener('resize', resizeAndMoveWelcomeSection);
 window.addEventListener('load', () => {
   resizeAndMoveWelcomeSection();

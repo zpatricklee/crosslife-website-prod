@@ -1,4 +1,4 @@
-fetch(`/public/partials/header.html`)
+fetch(`/partials/header.html`)
   .then((response) => response.text())
   .then((html) => {
     const headerPlaceholder = document.getElementById('header-placeholder');
@@ -85,7 +85,7 @@ fetch(`/public/partials/header.html`)
   })
   .catch((error) => console.error('Error loading header.html:', error));
 
-fetch(`/public/partials/footer.html`)
+fetch(`/partials/footer.html`)
   .then((response) => response.text())
   .then((html) => {
     document.getElementById('footer-container').innerHTML = html;

@@ -3,6 +3,7 @@ fetch(`/partials/header.html`)
   .then((html) => {
     const headerPlaceholder = document.getElementById('header-placeholder');
 
+
     if (headerPlaceholder.classList.contains('home-page')) {
       document.getElementById('header-placeholder').innerHTML = html;
       const header = document.getElementById('header');
@@ -12,6 +13,11 @@ fetch(`/partials/header.html`)
       const header = document.getElementById('header');
       header.classList.add('not-home-page');
     }
+
+    // Force layout recalculation after header is loaded and class is set
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 0);
 
     const menuToggle = document.getElementById('menu-toggle');
     const navbar = document.getElementById('navbar');

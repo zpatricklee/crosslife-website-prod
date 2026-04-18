@@ -5,24 +5,22 @@ function resizeAndMoveWelcomeSection() {
   );
   const welcomeText = document.getElementById('welcome-section-text-container');
 
+  if (!welcomeSectionContainer || !welcomeText) return;
+
   if (window.innerWidth <= 805) {
-    if (
-      welcomeSectionContainer &&
-      welcomeText &&
-      !welcomeSectionContainer.contains(welcomeText)
-    ) {
+    // Move welcomeText inside welcomeSectionContainer if not already there
+    if (!welcomeSectionContainer.contains(welcomeText)) {
       welcomeSectionContainer.appendChild(welcomeText);
-    } else if (
-      // Move the welcome text back to its original position if it exists
-      (welcomeText &&
-        welcomeSectionContainer &&
-        !document.body.contains(welcomeText)) ||
-      (welcomeText && welcomeSectionContainer?.contains(welcomeText))
-    ) {
-      document.body.insertBefore(
-        welcomeText,
-        welcomeSectionContainer.nextSibling,
-      );
+    }
+  } else {
+    // Move welcomeText after welcomeSectionContainer in the DOM, only if not already there
+    const parent = welcomeSectionContainer.parentNode;
+    if (parent && parent !== welcomeText.parentNode) {
+      if (welcomeSectionContainer.nextSibling) {
+        parent.insertBefore(welcomeText, welcomeSectionContainer.nextSibling);
+      } else {
+        parent.appendChild(welcomeText);
+      }
     }
   }
 }

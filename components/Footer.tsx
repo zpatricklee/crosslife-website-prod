@@ -22,7 +22,7 @@ export default function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-16 text-center">
         <p className="font-serif text-lg tracking-[0.15em]">CROSSLIFE</p>
         <div className="flex flex-col gap-1 text-sm text-cream/70">
-          <p>hello@crosslifegpc.com</p>
+          <p>info@crosslifegpc.com</p>
           <p>Gardena, CA 90247</p>
         </div>
         <div className="mt-2 flex items-center gap-5">

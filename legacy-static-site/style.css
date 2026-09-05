@@ -483,6 +483,7 @@ h2 {
   }
 
   .main-title h1 {
+    padding-top: 10px;
     height: auto;
     font-size: 3rem;
     letter-spacing: -4px;
@@ -581,9 +582,5 @@ h2 {
     padding: 8px 12px;
   }
   
-  /* h4 {
-    font-size: 1.4rem;
-    letter-spacing: -1px;
-    padding: 6px 12px;
-  } */
+
 }

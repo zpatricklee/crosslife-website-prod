@@ -73,6 +73,7 @@ export default function Header() {
             </Link>
             <a
               href={GIVE_URL}
+              data-umami-event="give-click"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-ink px-5 py-2 text-ink transition-colors hover:border-accent hover:text-accent"
@@ -148,6 +149,7 @@ export default function Header() {
         </Link>
         <a
           href={GIVE_URL}
+          data-umami-event="give-click"
           target="_blank"
           rel="noopener noreferrer"
           className="rounded-full border border-ink px-6 py-2.5 hover:border-accent hover:text-accent"

@@ -30,6 +30,8 @@ export default function Footer() {
             <a
               key={social.label}
               href={social.href}
+              data-umami-event="social-click"
+              data-umami-event-platform={social.label}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={social.label}

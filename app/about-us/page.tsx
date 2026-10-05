@@ -18,6 +18,7 @@ export default function AboutUsPage() {
             at Gardena Presbyterian Church, located at{' '}
             <a
               href="https://www.google.com/maps/dir/?api=1&destination=1340+W+Gardena+Blvd,+Gardena,+CA+90247"
+              data-umami-event="directions-click"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent underline decoration-line underline-offset-4 hover:text-accent-dark"

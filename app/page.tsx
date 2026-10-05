@@ -66,6 +66,7 @@ export default function Home() {
             <p className="text-2xl font-light text-ink">11:30am</p>
             <a
               href={MAPS_URL}
+              data-umami-event="directions-click"
               target="_blank"
               rel="noopener noreferrer"
               className="max-w-xs text-sm text-ink-muted underline decoration-line underline-offset-4 transition-colors hover:text-accent"
@@ -92,6 +93,7 @@ export default function Home() {
             </p>
             <a
               href={NEWCOMERS_FORM_URL}
+              data-umami-event="newcomer-form-click"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 rounded-full border border-ink px-6 py-2.5 text-sm font-medium tracking-wide text-ink transition-colors hover:border-accent hover:text-accent"

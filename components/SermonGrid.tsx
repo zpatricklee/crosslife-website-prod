@@ -46,6 +46,8 @@ export default function SermonGrid({
           <a
             key={sermon.id}
             href={`https://www.youtube.com/watch?v=${sermon.id}`}
+            data-umami-event="sermon-click"
+            data-umami-event-title={sermon.title}
             target="_blank"
             rel="noopener noreferrer"
             className="group block"
@@ -69,6 +71,7 @@ export default function SermonGrid({
       {(canShowMoreLocally || canFetchMore) && (
         <button
           onClick={handleLoadMore}
+          data-umami-event="sermons-load-more"
           disabled={isPending}
           className="mt-16 rounded-full border border-ink px-7 py-3 text-sm font-medium tracking-wide text-ink transition-colors hover:border-accent hover:text-accent disabled:cursor-wait disabled:opacity-50"
         >

@@ -17,6 +17,11 @@ const USER_AGENT =
 const FONT_HOSTS = new Set(['themes.googleusercontent.com', 'fonts.googleapis.com']);
 
 export const IMAGE_PROXY_PATH = '/api/newsletter-image';
+/** Widths the image relay can produce; the page offers both and the browser picks one. */
+export const IMAGE_WIDTHS = [640, 1200] as const;
+// Pictures are shown at most ~608px wide (the issue column minus its padding), and
+// edge to edge minus 18px padding on phones.
+const IMAGE_SIZES = '(max-width: 600px) calc(100vw - 36px), 608px';
 
 /** Google blocks other sites from loading its Doc images directly, so they go through our relay. */
 export function isDocImageUrl(url: URL): boolean {
@@ -128,7 +133,7 @@ export async function getNewsletterDoc(docUrl: string): Promise<string | null> {
     allowedAttributes: {
       '*': ['class', 'id'],
       a: ['href', 'title', 'target', 'rel'],
-      img: ['src', 'alt', 'title', 'style'],
+      img: ['src', 'srcset', 'sizes', 'alt', 'title', 'style', 'width', 'height', 'loading', 'decoding'],
       td: ['colspan', 'rowspan'],
       th: ['colspan', 'rowspan'],
     },
@@ -144,16 +149,37 @@ export async function getNewsletterDoc(docUrl: string): Promise<string | null> {
         };
       },
       img: (tagName, attribs) => {
-        const src = attribs.src ? proxiedImage(attribs.src) : null;
+        const base = attribs.src ? proxiedImage(attribs.src) : null;
         // The Doc sizes images in px; keep that as a ceiling but let them shrink to fit.
-        const width = parseFloat(/width:\s*([\d.]+)px/.exec(attribs.style ?? '')?.[1] ?? '');
+        const px = (prop: string) =>
+          parseFloat(new RegExp(`(?:^|[;\\s])${prop}:\\s*([\\d.]+)px`).exec(attribs.style ?? '')?.[1] ?? '');
+        const width = px('width');
+        const height = px('height');
+        const [smallest] = IMAGE_WIDTHS;
         return {
           tagName,
           attribs: {
-            src: src ?? '',
+            ...(base
+              ? {
+                  src: `${base}&w=${smallest}`,
+                  srcset: IMAGE_WIDTHS.map((w) => `${base}&w=${w} ${w}w`).join(', '),
+                  sizes: IMAGE_SIZES,
+                  // Lazy, so the browser picks a srcset size once the frame has its
+                  // real width (it otherwise starts fetching before layout and then
+                  // re-picks, downloading two sizes), and skips pictures far down the
+                  // page until you scroll toward them.
+                  loading: 'lazy',
+                  decoding: 'async',
+                }
+              : { src: '' }),
             alt: attribs.alt ?? '',
             ...(Number.isFinite(width) && width > 0
               ? { style: `width:min(100%,${Math.round(width)}px);height:auto` }
+              : {}),
+            // The Doc's own size lets the browser reserve the right amount of space
+            // before a lazy picture arrives, so the page doesn't jump as you scroll.
+            ...(Number.isFinite(width) && width > 0 && Number.isFinite(height) && height > 0
+              ? { width: String(Math.round(width)), height: String(Math.round(height)) }
               : {}),
           },
         };

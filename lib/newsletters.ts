@@ -131,7 +131,7 @@ export async function getNewsletters(): Promise<Newsletter[]> {
     return [];
   }
 
-  const res = await fetch(csvUrl, { next: { revalidate: 60 } });
+  const res = await fetch(csvUrl, { next: { revalidate: 3600 } });
   if (!res.ok) {
     console.error('Newsletter sheet request failed', res.status);
     return [];

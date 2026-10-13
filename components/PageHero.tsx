@@ -1,9 +1,20 @@
 import Image from 'next/image';
 import churchStreetView from '@/public/church-street-view.jpg';
 
-export default function PageHero({ title }: { title: string }) {
+export default function PageHero({
+  title,
+  compact = false,
+}: {
+  title: string;
+  /** A short banner, for pages where the content needs the room. */
+  compact?: boolean;
+}) {
   return (
-    <div className="relative flex h-[38vh] min-h-[260px] items-center justify-center overflow-hidden">
+    <div
+      className={`relative flex items-center justify-center overflow-hidden ${
+        compact ? 'h-28' : 'h-[38vh] min-h-[260px]'
+      }`}
+    >
       <Image
         src={churchStreetView}
         alt=""

@@ -35,7 +35,7 @@ export default function Header() {
             CROSSLIFE
           </Link>
 
-          <nav className="hidden items-center gap-9 text-[13px] font-medium tracking-[0.08em] text-ink md:flex">
+          <nav className="hidden items-center gap-6 text-[13px] font-medium tracking-[0.08em] text-ink md:flex lg:gap-9">
             <Link href="/" className="transition-colors hover:text-accent">
               HOME
             </Link>
@@ -64,6 +64,12 @@ export default function Header() {
               className="transition-colors hover:text-accent"
             >
               SERMONS
+            </Link>
+            <Link
+              href="/newsletters"
+              className="transition-colors hover:text-accent"
+            >
+              NEWSLETTERS
             </Link>
             <Link
               href="/#newcomers"
@@ -139,6 +145,13 @@ export default function Header() {
           onClick={closeMenu}
         >
           Sermons
+        </Link>
+        <Link
+          href="/newsletters"
+          className="hover:text-accent"
+          onClick={closeMenu}
+        >
+          Newsletters
         </Link>
         <Link
           href="/#newcomers"

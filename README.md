@@ -18,7 +18,29 @@ Open [http://localhost:3000](http://localhost:3000).
 | ------------------ | ------------------------------------------------------------------------ |
 | `YOUTUBE_API_KEY` | Server-only key used to pull recent sermons from the YouTube Data API for the `/sermons` page. Never exposed to the browser. |
 
+| `NEWSLETTERS_CSV_URL` | URL of the Google Sheet (published to the web as CSV) that indexes the newsletter archive. See below. |
+
 Get/rotate a key at the [Google Cloud Console](https://console.cloud.google.com/apis/credentials) (enable the "YouTube Data API v3").
+
+## Newsletter archive
+
+The `/newsletters` page is driven by a Google Sheet, so adding an issue never needs a code change or deploy.
+
+**One-time setup**
+1. Create a Google Sheet with a header row: `date`, `title`, `url`, `summary` (`summary` is optional).
+2. File → Share → Publish to web → choose that sheet tab and the **Comma-separated values (.csv)** format → Publish. Copy the link.
+3. Set it as `NEWSLETTERS_CSV_URL` in `.env.local` and in Vercel (Project Settings → Environment Variables), then redeploy.
+
+**Each week**
+1. In the newsletter Google Doc: File → Share → Publish to web → Publish. Copy the link (it ends in `/pub`).
+2. Add a row to the Sheet: the issue date (`2026-10-12` or `10/12/2026`), a title, and the link.
+3. The site picks it up within about an hour (Sheets can take a few minutes to refresh the CSV, then the page re-caches hourly).
+
+Rows with an invalid date, or a URL that isn't a published `docs.google.com/document/.../pub` link, are skipped.
+
+**How it's displayed:** `/newsletters` opens the latest issue. On large screens the list of issues sits on the left (grouped by year) and the selected issue is shown, centered, by embedding the published Doc; on small screens the list becomes a dropdown. A floating arrow button at the bottom of the issue sends the Doc back to the top. Each issue has its own URL, `/newsletters/<date>`.
+
+> **Privacy:** "Publish to web" makes a document readable by anyone with its link, and search engines can find it. Don't publish a version containing prayer requests or other personal details.
 
 ## Deploying to Vercel
 

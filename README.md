@@ -38,7 +38,9 @@ The `/newsletters` page is driven by a Google Sheet, so adding an issue never ne
 
 Rows with an invalid date, or a URL that isn't a published `docs.google.com/document/.../pub` link, are skipped.
 
-**How it's displayed:** `/newsletters` opens the latest issue. On large screens the list of issues sits on the left (grouped by year) and the selected issue is shown, centered, by embedding the published Doc; on small screens the list becomes a dropdown. A floating arrow button at the bottom of the issue sends the Doc back to the top. Each issue has its own URL, `/newsletters/<date>`.
+**How it's displayed:** `/newsletters` opens the latest issue. On large screens the list of issues sits on the left (grouped by year) and the selected issue is shown, centered; on phones the list becomes a full-screen picker. Each issue has its own URL, `/newsletters/<date>`, and a floating arrow button returns you to the top of the issue.
+
+The issue itself is not Google's embed (which is a fixed-width page that gets cropped on phones). The server fetches the published Doc, keeps its text, formatting and fonts, strips anything executable, and shows it in a sandboxed frame that reflows to the screen width and grows to fit, so the page scrolls as one. Pictures are fetched through `/api/newsletter-image`, because Google won't let other sites load them directly; that route only ever fetches published-Doc images. If a Doc can't be converted, the page falls back to Google's embed. The code is in `lib/newsletterDoc.ts`.
 
 > **Privacy:** "Publish to web" makes a document readable by anyone with its link, and search engines can find it. Don't publish a version containing prayer requests or other personal details.
 

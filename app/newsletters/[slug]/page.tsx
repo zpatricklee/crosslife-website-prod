@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import NewsletterViewer from '@/components/NewsletterViewer';
 import { formatNewsletterDate, getNewsletters } from '@/lib/newsletters';
+import { getNewsletterDoc } from '@/lib/newsletterDoc';
 
 export const revalidate = 3600;
 
@@ -25,6 +26,8 @@ export default async function NewsletterPage({ params }: Props) {
 
   return (
     <NewsletterViewer
+      key={newsletter.slug}
+      srcDoc={await getNewsletterDoc(newsletter.docUrl)}
       title={newsletter.title}
       dateLabel={formatNewsletterDate(newsletter.date)}
       embedUrl={newsletter.embedUrl}
